@@ -1,0 +1,17 @@
+# Update logs
+
+# upload files
+add bootstrap, bcrypt
+upload imgs
+
+# updated files
+updated files application.css, application.html.erb, header&footer
+updating user model...
+
+# new controller/model/etc.
+controller Static_page index about #all the static page
+controller Users new # all pages relevant to users - sign up, sign in...etc
+model User name:string email:string # user model, db
+
+controller session for sign in sign out
+

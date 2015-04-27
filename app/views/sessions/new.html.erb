@@ -1,0 +1,35 @@
+<div class="container">
+  <% provide(:title, "Sign in") %>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-12 upper_bar"></div>
+    <h2 class="turquoise">Sign in to <span class="logo">Hi Roommates!</span></h2>
+  <p>Welcome back to Hi Roommates, a better way to find roommates.</p>
+  
+  <p>Please enter your username and password to continue.</p>
+  <p>or, <%= link_to "sign up", signup_path, data: { no_turbolink: true } %> for a new account!</p>
+    <%= image_tag "sign_in.png", :width=>"240px", :height=>"165px", :alt => "Image", :class=>"", :id=>"sign_in_img" %>
+  
+    <div class="col-md-12 lower_bar">
+
+  
+      <%= form_for(:session, url: login_path, :html=> {:class => "form-inline center"})  do |f| %>
+
+    <%= f.email_field :email, class: 'form-control', placeholder: "Email" %>
+
+    <%= f.password_field :password, class: 'form-control', placeholder: "Password" %>
+
+    <%= f.submit "Sign in", class: "btn btn-primary" %>
+  
+    <% end %>
+      </div>
+  </div>
+</div>
+  
+ 
+        
+</div>
+
+
+
+

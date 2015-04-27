@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hi Rommates!</title>
+    <%=stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
+        <%=javascript_include_tag 'application', 'data-turbolinks-track'=> true %>
+            <%=csrf_meta_tags %>
+  <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+                <!-- Google fonts -->
+<!--   logo -->
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+<!--   nav -->
+  <link href='http://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+<!--   p -->
+  <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+  
+    <div class="container">
+        <header class="row">
+            <div class="col-md-6">
+                <h1 class="logo">Hi Roommate!</h1>
+            </div>
+            <div class="col-md-4">
+                
+              <ul id="nav1" class="list-unstyled list-inline">
+                    <li>
+                      <%=link_to "Home", index_path %></li>
+                    <li>
+                      <% if logged_in? %>
+                        <%= link_to "My Profile", current_user %>
+                      <% else %>
+                        <%=link_to "My Profile", login_path %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if logged_in? %>
+                        <%=link_to "Find Roomates", :controller=>"matching", :action => "find_compatibility"%>
+                      <% else %>
+                        <%=link_to "Find Roomates", login_path %>
+                      <% end %>
+                      
+                </li>
+                    <li>
+                      <%=link_to "About Us", about_path %></li>
+    
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul id="nav2" class="list-unstyled list-inline">
+                  
+                     <% if !logged_in? %>
+                        <li><%=link_to "Sign in", login_path %></li>
+                        <li>/</li>
+                        <li><%=link_to "Sign up", signup_path, data: { no_turbolink: true }%> </li>
+                     <% else %>
+                  <li>Welcome, <span class= "orange"><%=current_user.name %></span></li>
+                        <li><%= link_to "Sign out", logout_path, method: :delete %></li>
+                     <% end %>
+
+                </ul>
+            </div>
+        </header>
+<br />
+      <br />
+<!--       display messages -->
+<% flash.each do |message_type, message| %>
+<%= message_type %> <%= message %>
+<% end %> 
+        </div>
+        
+        <%=yield %>
+  <br />
+      <br />
+        <div class="container">
+        <footer class="row">
+            
+            <div class="col-md-2">
+                <p class="logo text-center" id="footer_logo">Hi Roomates!</p>
+            </div>
+            <div class="col-md-8">
+                <p class="orange text-center" id="footer_p">Copyright @2015 HiRoomates. All Right Reserved.</p>
+            </div>
+            <div class="col-md-2">
+                    <ul id="nav3" class="list-unstyled text-center">
+                        <li><strong>Team:</strong></li>
+                        <li>Beibei Lu,</li>
+                        <li>Brea Llorens,</li>
+                        <li>Wenqi Fan.</li>
+                    </ul>
+            </div>
+          
+        </footer>
+    </div>
+</body>
+
+</html>
+

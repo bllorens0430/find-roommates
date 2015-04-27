@@ -1,0 +1,40 @@
+
+
+<%= form_for(@preference) do |f| %>
+  <% if @preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+
+      <ul>
+      <% @preference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%@preference.user_id = current_user.id%>
+<%= f.label "Pets Permitted:" %><br>
+<%= f.select(:question1, [['Cats', 1], ['Dogs', 2],['Both', 3], ['Neither', 4]], { :class => 'form-control'}) %><br>
+<%= f.label "The time of day I prefer to study is:" %><br>
+<%= f.select(:question2, [['During the morning', 1], ['During the afternoon', 2],['During the evening', 3], ['Late at night', 4]]) %><br>
+<%= f.label "I prefer the appearance of the room to be:" %><br>
+<%= f.select(:question3, [['Usually orderly and clean', 1], ['Sometimes orderly and clean', 2],['Disorderly', 3]]) %><br>
+<%= f.label "I would prefer approved visitors:" %><br>
+<%= f.select(:question4, [['Be welcome anytime', 1], ['Leave when I sleep', 2],['Leave when I am in the room', 3], ['Just let me know when they are coming', 4]]) %><br>
+<%= f.label "What are your sleeping habits?" %><br>
+<%= f.select(:question5, [['Early Bird', 1], ['Night Owl', 2],['Sleep All Day', 3], ['Normal', 4]]) %><br>
+<%= f.label "When I am upset, I need:" %><br>
+<%= f.select(:question6, [['To talk about things', 1], ['Space and time to deal with it on my own', 2],['To be distracted', 3], ['To bake cookies', 4]]) %> <br>
+<div class="hidden">
+<%= f.label "User ID:" %><br><%= f.select(:user_id,[current_user.id])%><br><br>
+</div>
+
+<div class="actions">
+   <%= f.submit %>
+</div>
+
+<% end %>
+  
+  
+

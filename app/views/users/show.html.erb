@@ -1,0 +1,56 @@
+<div class="container">
+  
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          
+          <%= gravatar_for @user %>
+          <h5><%= @user.name%></h5>
+          <br />
+          <h6>Job: Student</h6>
+          <h6>School: DePauw University</h6>
+          <h6>Email:<%= @user.email %></h6>
+          <h6>Profile ID: <%= @user.id %></h6>
+        </div>
+        
+      </div>
+  <div class="col-md-9">
+    <h3>My Preferences</h3>
+    <br />
+    <br />
+        <ul class="list-group">
+        <li class="list-group-item"><strong>Pets Permitted:</strong>
+          <%= @content[0].to_s %>
+        </li>
+        <li class="list-group-item"> <strong>The time of day I prefer to study is:</strong>
+            <%= @content[1].to_s %>
+        </li>
+        <li class="list-group-item"> <strong>I prefer the appearance of the room to be:</strong>
+            <%= @content[2].to_s %>
+        </li>
+        <li class="list-group-item"><strong>I would prefer approved visitors:</strong>
+            <%= @content[3].to_s %>
+        </li>
+        <li class="list-group-item"><strong>My sleeping habits:</strong>
+            <%= @content[4].to_s %>
+        </li>
+        <li class="list-group-item"><strong>When I am upset, I need:</strong>
+            <%= @content[5].to_s %>
+        </li>
+          
+    </ul>
+    
+    <% if @user = current_user %>
+        
+            <%=link_to 'Edit Preferences?', edit_preference_path %>
+          <% else %>
+          <br>
+          <% end %>
+    
+    </div>
+</div>
+
+  
+

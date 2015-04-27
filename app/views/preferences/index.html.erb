@@ -1,0 +1,92 @@
+<h1>All User's Preferences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Names</th>
+      <th>Pets Permitted</th>
+      <th>Preferred time of day to study</th>
+      <th>I prefer the appearance of the room to be</th>
+      <th>I would prefer approved visitors</th>
+      <th>My sleeping habits</th>
+      <th>When I am upset, I need</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @preferences.each do |preference| %>
+    <% @content = []
+    
+  
+    if preference.question2 == 1
+      @content << "I prefer to study during the morning"
+      elsif preference.question2 == 2
+      @content << "I prefer to study during the afternoon"
+      elsif preference.question2 == 3
+      @content << "I prefer to study during the evening"
+    else
+      @content << "I prefer to study during late at night"
+    end
+  
+    if preference.question3 == 1
+      content << "My room is usually orderly and clean"
+      elsif preference.question3 == 2
+      content << "My room is sometimes orderly and clean"
+    else
+      content << "My room is disorderly"
+    end
+    
+    if preference.question4 == 1
+      content << "The visiotrs will be welcome any time"
+      elsif preference.question4 == 2
+      content << "The visitors should Leave when I sleep"
+      elsif preference.question4 == 3
+      content << "The visiotrs should leave when I am in the room"
+    
+    else
+      content << "The visiotrs should just let me know when they are coming"
+    end
+    
+    if preference.question5 == 1
+      content << "My sleeping habit is early bird"
+      elsif preference.question5 == 2
+      content << "My sleeping habit is night owl"
+      elsif preference.question5 == 3
+      content << "My sleeping habit is sleep all day"
+    else
+      content << "My sleeping habit is mormal"
+    end
+    
+   if preference.question6 == 1
+     content << "When I upset, I need to talk about things"
+      elsif preference.question6 == 2
+     content << "When I upset, I need space and time to deal with it on my own"
+      elsif preference.question6 == 3
+     content << "When I upset, I need to to be distracted"
+    else
+     content << "When I upset, I need to bake cookies"
+    end%>
+      
+    <%name = preference.user%> 
+   
+    
+      <tr>
+        <td><%= name.name %></td>
+        <td><%= preference.question1 %></td>
+        <td><%= @content[0] %></td>
+        <td><%= preference.question3 %></td>
+        <td><%= preference.question4 %></td>
+        <td><%= preference.question5 %></td>
+        <td><%= preference.question6 %></td>
+        <td><%= link_to 'Show', preference %></td>
+        <td><%= link_to 'Edit', edit_preference_path(preference) %></td>
+        <td><%= link_to 'Destroy', preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Preference', new_preference_path %>

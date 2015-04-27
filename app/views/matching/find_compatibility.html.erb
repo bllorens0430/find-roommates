@@ -1,0 +1,48 @@
+<div class="container">
+<h3>Match Results</h3><br /><br /><br />
+  <div class="row">
+ <%@percent.each do |n, p|%>
+    <%if p.to_i > 50 %>
+  <div class="col-sm-6 col-md-4 pull-left" >
+    <div class="thumbnail" id = "card">
+      <%= gravatar_for n %>
+      
+      
+      <div class="caption">
+        <h3 class = "text-center"><span class = "orange"><%= p %>%</span> Match</h3>
+        <h4 class = "text-center"><span><%= n.name %></span> </h4>
+        <p><span class="orange"><%= n.name %></span> might be the perfect roommate for you! Even if your compatibility isn't very high, check their profile out anyway! You can contact <%= n.name %> at <%= n.email %> if you have any questions or want to get to know them more.</p>
+        <p style ="text-align:center"><%=link_to "Profile", n, role: "button", class: "btn btn-info"%></p>
+      </div>
+    </div>
+  </div>
+
+    <% elsif p.to_i >= 0 %>
+<!--     Do not show matches 50%-0% -->
+    <%else%>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <h3 class = "text-center orange">Sorry, no roommate matches.</h3><br /><br /><br />
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%end%>
+   
+    
+    <%end%>
+   </div>
+  <br>
+  <%= image_tag "pref_img.png", :width=>"300px", :height=>"150px", :alt => "Image", :class=>"pull-right", :id=>"pref_img" %>
+  </div>
+
